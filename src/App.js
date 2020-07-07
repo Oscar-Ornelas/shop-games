@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import GameCard from './components/GameCard';
+import GameDetail from './components/GameDetail';
 
 function App() {
   const [gameList, setGameList] = useState(null);
@@ -29,9 +31,18 @@ function App() {
   )
 
   return (
-    <section className="game-list">
-      {games}
-    </section>
+    <>
+      <Switch>
+        <Route path="/">
+          <section className="game-list">
+            {games}
+          </section>
+        </Route>
+        <Route path="/detail/:gameId">
+          <GameDetail/>
+        </Route>
+      </Switch>
+    </>
   );
 }
 
