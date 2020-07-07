@@ -29,8 +29,7 @@ function App() {
   )
 
   return (
-    <section classList="games-list">
-
+    <section className="game-list">
       {games}
     </section>
   );
