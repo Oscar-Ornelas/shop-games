@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/shop-games/static/css/main.673ec958.chunk.css",
+    "main.js": "/shop-games/static/js/main.dee0ac77.chunk.js",
+    "main.js.map": "/shop-games/static/js/main.dee0ac77.chunk.js.map",
+    "runtime-main.js": "/shop-games/static/js/runtime-main.6ef84e8e.js",
+    "runtime-main.js.map": "/shop-games/static/js/runtime-main.6ef84e8e.js.map",
+    "static/js/2.0d96ec0a.chunk.js": "/shop-games/static/js/2.0d96ec0a.chunk.js",
+    "static/js/2.0d96ec0a.chunk.js.map": "/shop-games/static/js/2.0d96ec0a.chunk.js.map",
+    "index.html": "/shop-games/index.html",
+    "precache-manifest.3e52635d63014c15d0960fe5e998b67b.js": "/shop-games/precache-manifest.3e52635d63014c15d0960fe5e998b67b.js",
+    "service-worker.js": "/shop-games/service-worker.js",
+    "static/css/main.673ec958.chunk.css.map": "/shop-games/static/css/main.673ec958.chunk.css.map",
+    "static/js/2.0d96ec0a.chunk.js.LICENSE.txt": "/shop-games/static/js/2.0d96ec0a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ef84e8e.js",
+    "static/js/2.0d96ec0a.chunk.js",
+    "static/css/main.673ec958.chunk.css",
+    "static/js/main.dee0ac77.chunk.js"
+  ]
+}
