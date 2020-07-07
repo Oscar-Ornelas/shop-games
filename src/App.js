@@ -26,6 +26,8 @@ function App() {
         name={game.name}
         img={game.background_image}
         rating={game.rating}
+        id={game.id}
+        key={game.id}
       />
     ))
   )
@@ -33,7 +35,7 @@ function App() {
   return (
     <>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <section className="game-list">
             {games}
           </section>

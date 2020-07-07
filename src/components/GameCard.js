@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 
 function GameCard(props) {
-  const [game, setGame] = useState(null);
+  const history = useHistory();
 
   return (
-    <div className="game-card">
+    <div onClick={() => history.push(`/detail/${props.id}`)} className="game-card">
       <p className="game-card-name">{props.name}</p>
       <div className="game-card-info">
         <p className="game-card-platforms">Xbox, Playstation, PC</p>
