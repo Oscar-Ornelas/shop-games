@@ -79,10 +79,21 @@ button {
   height: 50px;
 }
 
+.game-detail-form-container {
+  margin: 2em 0 0 0;
+}
+
+.game-detail-metascore span {
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 0.25em;
+  margin: 0 0 0 0.25em;
+}
+
 .game-detail-form {
   display: flex;
   flex-direction: column;
-  margin: 2em 0 0 0;
+  margin: 1.5em 0 0 0;
 }
 
 .game-detail-platform-label {
@@ -112,9 +123,38 @@ button {
   font-weight: 700;
 }
 
-@media (min-width: 800px) {
+.game-detail-overview {
+  margin: 3em 0 0 0;
+}
+
+.game-detail-header {
+  text-align: center;
+}
+
+.game-detail-description {
+  line-height: 1.6;
+}
+
+@media (min-width: 700px) {
   .game-detail-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-gap: 3em;
   }
+
+  .game-detail-img {
+    grid-column: 1;
+  }
+
+  .game-detail-main-info,
+  .game-detail-form {
+    grid-column: 2;
+    margin: 0;
+  }
+
+  .game-detail-main-info {
+    align-items: flex-start;
+  }
+
+
 }
