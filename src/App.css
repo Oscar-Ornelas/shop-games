@@ -6,12 +6,21 @@
 body {
   margin: 0;
   padding: 2em;
-  font-size: 1rem;
+  font-size: 1.10rem;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 img {
   width: 100%;
   display: block;
+}
+
+strong {
+  font-weight: 700;
+}
+
+button {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 /* GameList */
@@ -44,4 +53,68 @@ img {
   object-position: center;
   max-height: 150px;
   min-height: 150px;
+}
+
+/* GameDetail */
+.game-detail-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 1.5em 0;
+}
+
+.game-detail-name {
+  font-size: 1.4rem;
+  margin: 0 0 0.25em 0;
+}
+
+.game-detail-publisher {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: .8;
+}
+
+.game-detail-esrb-rating {
+  width: 35px;
+  height: 50px;
+}
+
+.game-detail-form {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0 0 0;
+}
+
+.game-detail-platform-label {
+  margin: 0 0 0.5em 0;
+}
+
+.game-detail-platform {
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.game-detail-price {
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #AA0000;
+  padding: 1em 2em;
+}
+
+.game-detail-btn {
+  padding: 1em 2em;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 1.05rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media (min-width: 800px) {
+  .game-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
 }
