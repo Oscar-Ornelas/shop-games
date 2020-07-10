@@ -61,11 +61,13 @@ function GameDetail(props) {
     <div>
       <section className="game-detail-grid">
         <div className="game-detail-main-info">
-          <div>
-            <h3 className="game-detail-name">{game.name}</h3>
-            <p className="game-detail-publisher">{game.publishers[0].name}</p>
+          <div className="game-detail-main-info-content">
+            <div>
+              <h3 className="game-detail-name">{game.name}</h3>
+              <p className="game-detail-publisher">{game.publishers[0].name}</p>
+            </div>
+            <img className="game-detail-esrb-rating" src={esrb_rating_m}/>
           </div>
-          <img className="game-detail-esrb-rating" src={esrb_rating_m}/>
         </div>
         <img className="game-detail-img" src={game.background_image}/>
         <div className="game-detail-form-container">
