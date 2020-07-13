@@ -30,8 +30,10 @@ function GameList(props) {
   )
 
   return (
-    <section className="game-list">
-      {games}
+    <section className="container">
+      <div className="game-list container-margin">
+        {games}
+      </div>
     </section>
   )
 

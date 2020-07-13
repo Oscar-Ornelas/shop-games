@@ -58,8 +58,8 @@ function GameDetail(props) {
 
   return (
     game &&
-    <div>
-      <section className="game-detail-grid">
+    <div className="game-detail-container container">
+      <section className="game-detail-grid container-margin">
         <div className="game-detail-main-info">
           <div className="game-detail-main-info-content">
             <div>
