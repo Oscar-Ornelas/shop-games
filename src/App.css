@@ -35,13 +35,14 @@ button {
 }
 
 .container-margin {
-  margin: 5em 0 0 0;
+  margin: 3em 0 0 0;
 }
 
 @media (min-width: 600px) {
   .container {
     padding: 3em 5em;
   }
+
 }
 
 @media (min-width: 900px) {
@@ -231,6 +232,10 @@ button {
 
 @media (min-width: 700px) {
 
+  .container-margin {
+    margin: 5em 0 0 0;
+  }
+
   .logo {
     font-size: 2rem;
     margin: 0 2em 0 0;
@@ -387,13 +392,20 @@ button {
   line-height: 1.8;
 }
 
+@media(min-width: 600px) {
+
+  .game-detail-grid {
+    margin: 5em 0 2em 0;
+  }
+
+}
+
 @media (min-width: 900px) {
 
   .game-detail-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
     grid-gap: 1.5em;
-    margin: 0 0 5em 0;
   }
 
   .game-detail-img {
