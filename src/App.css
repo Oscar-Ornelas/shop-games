@@ -35,7 +35,7 @@ button {
 }
 
 .container-margin {
-  margin: 3em 0 0 0;
+  margin: 5em 0 0 0;
 }
 
 @media (min-width: 600px) {
@@ -68,7 +68,7 @@ button {
   display: grid;
   grid-gap: 2em;
   grid-template-columns: repeat(4, 1fr);
-  background: #45264b;
+  background: #E5E5E5;
 }
 
 .navigation-open {
@@ -89,6 +89,7 @@ button {
 .logo {
   font-size: 1.25rem;
   margin: 0;
+  color: #7B0100;
 }
 
 .nav {
@@ -132,7 +133,7 @@ button {
 }
 
 .search-input {
-  background: white;
+  background: #BBBBBB;
   padding: 8px 40px 8px 10px;
   width: 150px;
   font-size: 0.75rem;
