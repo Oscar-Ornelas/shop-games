@@ -8,11 +8,12 @@ import Checkout from './components/Checkout';
 
 
 function App() {
+  const [cart, setCart] = useState([1]);
   const [navSlide, setNavSlide] = useState(true);
 
   return (
     <>
-      <Header navSlide={navSlide} setNavSlide={setNavSlide}/>
+      <Header cart={cart} navSlide={navSlide} setNavSlide={setNavSlide}/>
       <Switch>
         <Route exact path="/">
           <Home/>

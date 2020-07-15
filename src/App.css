@@ -181,6 +181,11 @@ button {
   color: #7B0100;
 }
 
+.cart-counter {
+  font-size: 1.5rem;
+  margin: 0 0 0 0.25em;
+}
+
 .navigation-open-lower {
   transform: translateY(-100%);
   transition: transform 500ms;
