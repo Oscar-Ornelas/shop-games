@@ -43,8 +43,8 @@ function Header(props) {
             </li>
           </ul>
         </nav>
-        <div className="header-discover">
-          <Link to="/discover" className="link"><a className="discover-link"><i className="fas fa-compass"></i></a></Link>
+        <div className="header-cart">
+          <Link to="/checkout" className="link"><a className="cart-link"><i class="fas fa-shopping-cart"></i></a></Link>
         </div>
       </div>
     </header>

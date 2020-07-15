@@ -171,13 +171,14 @@ button {
   padding: 0.7em 0;
 }
 
-.header-discover {
+.header-cart {
   display: none;
 }
 
-.discover-link {
+.cart-link {
   font-size: 2.7rem;
   cursor: pointer;
+  color: #7B0100;
 }
 
 .navigation-open-lower {
@@ -267,7 +268,7 @@ button {
     padding: 12px 22px;
   }
 
-  .header-discover {
+  .header-cart {
     display: block;
     grid-column: 4;
     justify-self: end;

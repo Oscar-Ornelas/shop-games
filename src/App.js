@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import GameDetail from './components/GameDetail';
+import Checkout from './components/Checkout';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/detail/:gameId">
           <GameDetail/>
+        </Route>
+        <Route path="/checkout">
+          <Checkout/>
         </Route>
       </Switch>
     </>
