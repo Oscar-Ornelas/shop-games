@@ -45,6 +45,12 @@ button {
 
 }
 
+@media(min-width: 700px) {
+  .container-margin {
+    margin: 5em 0 0 0;
+  }
+}
+
 @media (min-width: 900px) {
   .container {
     padding: 3em 2.5em;
@@ -232,10 +238,6 @@ button {
 
 @media (min-width: 700px) {
 
-  .container-margin {
-    margin: 5em 0 0 0;
-  }
-
   .logo {
     font-size: 2rem;
     margin: 0 2em 0 0;
@@ -285,17 +287,33 @@ button {
 .game-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 325px;
+  max-height: 325px;
   max-width: 250px;
   margin: auto;
+  border: 3px solid #7B0100;
+  border-radius: 8px;
+  transform: scale(1);
+  transition: transform 500ms;
+  cursor: pointer;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+  transition: transform 500ms;
 }
 
 .game-card-name {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0 1em 0 0.75em;
 }
 
 .game-card-info {
   display: flex;
   justify-content: space-between;
+  padding: 0 1em 0.5em 1em;
 }
 
 .game-card-img {
@@ -304,6 +322,10 @@ button {
   object-position: center;
   max-height: 150px;
   min-height: 150px;
+}
+
+.game-card-platform-icon {
+  margin: 0 0.2em;
 }
 
 /* GameDetail */

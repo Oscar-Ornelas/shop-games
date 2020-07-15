@@ -18,15 +18,33 @@ function GameList(props) {
   }, []);
 
   const games = gameList !== null && (
-    gameList.map(game => (
-      <GameCard
-        name={game.name}
-        img={game.background_image}
-        rating={game.rating}
-        id={game.id}
-        key={game.id}
-      />
-    ))
+    gameList.map(game => {
+
+      const platforms = game.platforms.map(platform => {
+        if(platform.platform.name === "PlayStation 4") {
+          return <i className="fab fa-playstation game-card-platform-icon"></i>
+        }
+
+        if(platform.platform.name === "Xbox One") {
+          return <i className="fab fa-xbox game-card-platform-icon"></i>
+        }
+
+        if(platform.platform.name === "PC") {
+          return <i className="fas fa-laptop game-card-platform-icon"></i>
+        }
+      });
+
+      return (
+        <GameCard
+          name={game.name}
+          img={game.background_image}
+          rating={game.rating}
+          platforms={platforms}
+          id={game.id}
+          key={game.id}
+        />
+      )
+    })
   )
 
   return (
