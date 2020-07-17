@@ -17,8 +17,8 @@ function GameDetail(props) {
     .then(response => response.json())
     .then(data => {
       const gamePrice = parseInt(data.released.substring(0,4)) < 2015 ? "$29.99" : "$59.99";
-      setGame(data);
-      setPlatform(data.platforms[0].platform.name);
+      setGame(() => ({...data, price: gamePrice, quantity: 0}));
+      setPlatform(data.platforms[0].platform);
       setPrice(gamePrice);
       console.log(data);
     })
@@ -26,6 +26,15 @@ function GameDetail(props) {
 
   function addToCart(e) {
     e.preventDefault();
+    props.cart.forEach(item => {
+      if(item.name === game.name || item.platform.id === platform.id) {
+        setGame(prevGame => ({...prevGame, quantity: prevGame.quantity += 1}));
+      } else {
+        setGame(prevGame => ({...prevGame, quantity: prevGame.quantity += 1, platform}));
+        props.setCart(prevCart => [...prevCart, game]);
+      }
+    })
+
   }
 
   function changePlatform(e) {
@@ -34,7 +43,7 @@ function GameDetail(props) {
   }
 
   const platforms = game && game.platforms.map(platform => (
-    <option key={platform.platform.name} value={platform.platform.name}>{platform.platform.name}</option>
+    <option key={platform.platform.name} value={platform.platform}>{platform.platform.name}</option>
   ))
 
   function setMetascoreStyle() {

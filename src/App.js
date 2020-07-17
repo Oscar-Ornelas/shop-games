@@ -8,7 +8,7 @@ import Checkout from './components/Checkout';
 
 
 function App() {
-  const [cart, setCart] = useState([1]);
+  const [cart, setCart] = useState([]);
   const [navSlide, setNavSlide] = useState(true);
 
   return (
@@ -19,10 +19,10 @@ function App() {
           <Home/>
         </Route>
         <Route path="/detail/:gameId">
-          <GameDetail/>
+          <GameDetail cart={cart} setCart={setCart}/>
         </Route>
         <Route path="/checkout">
-          <Checkout/>
+          <Checkout cart={cart} setCart={setCart}/>
         </Route>
       </Switch>
     </>
