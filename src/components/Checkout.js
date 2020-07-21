@@ -10,6 +10,7 @@ function Checkout(props) {
       price={game.price}
       name={game.name}
       quantity={game.quantity}
+      platform={game.platform}
     />
   ))
 
