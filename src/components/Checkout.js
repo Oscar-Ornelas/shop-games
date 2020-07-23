@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import CheckoutItem from './CheckoutItem';
 
 function Checkout(props) {
@@ -33,7 +34,7 @@ function Checkout(props) {
         :
           <div className="checkout-empty">
             <p className="checkout-empty-cart">Looks like there is nothing in your cart!</p>
-            <button className="btn btn-empty-cart">Continue Shopping</button>
+            <Link to="/" className="link"><button className="btn btn-empty-cart">Continue Shopping</button></Link>
           </div>
         }
 

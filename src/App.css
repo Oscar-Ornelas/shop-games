@@ -479,6 +479,31 @@ button {
 
 }
 
+/* Modal */
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 /* Checkout */
 .checkout {
   display: flex;
@@ -556,6 +581,51 @@ button {
   cursor: pointer;
   margin: 0 0 0 2em;
 }
+
+.remove-item-container {
+  max-width: 400px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.remove-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-item-header {
+  margin: 0;
+}
+.remove-item-subtitle {
+  font-size: 1rem;
+}
+
+.remove-item-product {
+  display: flex;
+  margin: 0 0 1.25em 0;
+}
+
+.remove-item-name {
+  margin: 0 0 0 1em;
+}
+
+.remove-item-img {
+  width: 125px;
+  order: -1;
+}
+
+.remove-item-btns {
+  display: flex;
+  margin: 0 0 0 auto;
+}
+
+.btn-cancel {
+  margin: 0 0.75em 0 0;
+  background: #101010;
+}
+
 
 @media (min-width: 900px) {
   .checkout-item {
