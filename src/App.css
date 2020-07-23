@@ -164,7 +164,7 @@ button {
 }
 
 .header-content-lower {
-  background: #45264b;
+  background: #E5E5E5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -257,8 +257,10 @@ button {
     display: none;
   }
 
-  .navigation-close,
-  .navigation-open {
+  .navigation-close-lower,
+  .navigation-open-lower,
+  .navigation-open,
+  .navigation-close {
     transform: translateY(0);
     transition: transform 500ms;
   }
@@ -277,7 +279,6 @@ button {
     display: block;
     grid-column: 4;
     justify-self: end;
-
   }
 
 }

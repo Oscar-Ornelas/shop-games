@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import GameDetail from './components/GameDetail';
 import Checkout from './components/Checkout';
+import LowerHeader from './components/LowerHeader';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Checkout cart={cart} setCart={setCart}/>
         </Route>
       </Switch>
+      <LowerHeader cart={cart} navSlide={navSlide} setNavSlide={setNavSlide}/>
     </>
   );
 }
