@@ -47,7 +47,6 @@ function Header(props) {
           <Link to="/checkout" className="link">
             <a className="cart-link">
               <i class="fas fa-shopping-cart"></i>{props.cart.length > 0 && <span className="cart-counter">{props.cart.length}</span>}
-
             </a>
           </Link>
         </div>

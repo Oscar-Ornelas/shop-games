@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function CheckoutItem(props) {
-  console.log(props.platform);
+
   return (
     <div className="checkout-item">
-      <h2 className="checkout-item-name">{props.name}</h2>
-      <p className="checkout-item-platform">{props.platform}</p>
-      <p>{props.quantity}</p>
-      <img className="checkout-item-img" src={props.img}/>
+        <div className="checkout-item-content">
+          <div className="checkout-item-info">
+            <h2 className="checkout-item-name">{props.name}</h2>
+            <p className="checkout-item-platform">Platform: {props.platform}</p>
+            <p className="checkout-item-price">Price: ${props.price}</p>
+            <p className="checkout-item-quantity">Quantity: {props.quantity}</p>
+            <p className="checkout-item-total-price">Total: ${props.price}</p>
+          </div>
+          <img className="checkout-item-img" src={props.img}/>
+        </div>
+        <i className="fas fa-times"></i>
     </div>
   )
 }

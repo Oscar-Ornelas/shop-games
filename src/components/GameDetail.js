@@ -16,7 +16,7 @@ function GameDetail(props) {
     })
     .then(response => response.json())
     .then(data => {
-      const gamePrice = parseInt(data.released.substring(0,4)) < 2015 ? "$29.99" : "$59.99";
+      const gamePrice = parseInt(data.released.substring(0,4)) < 2015 ? 29.99 : 59.99;
       setGame({...data, price: gamePrice, quantity: 1, platform: data.platforms[0].platform.name});
       setPlatform(data.platforms[0].platform.name);
       setPrice(gamePrice);
@@ -83,7 +83,7 @@ function GameDetail(props) {
             <select className="game-detail-platform" onChange={changePlatform} name="platform" id="platform">
               {platforms}
             </select>
-            <p className="game-detail-price">{price}</p>
+            <p className="game-detail-price">${price}</p>
             <button className="game-detail-btn">Add To Cart</button>
           </form>
         </div>

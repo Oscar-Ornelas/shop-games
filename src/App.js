@@ -9,7 +9,7 @@ import Checkout from './components/Checkout';
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [navSlide, setNavSlide] = useState(true);
+  const [navSlide, setNavSlide] = useState(false);
 
   return (
     <>
