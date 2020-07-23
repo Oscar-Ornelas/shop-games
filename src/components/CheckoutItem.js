@@ -7,10 +7,12 @@ function CheckoutItem(props) {
         <div className="checkout-item-content">
           <div className="checkout-item-info">
             <h2 className="checkout-item-name">{props.name}</h2>
-            <p className="checkout-item-platform">Platform: {props.platform}</p>
-            <p className="checkout-item-price">Price: ${props.price}</p>
-            <p className="checkout-item-quantity">Quantity: {props.quantity}</p>
-            <p className="checkout-item-total-price">Total: ${props.price}</p>
+            <div className="checkout-item-main-info">
+              <p className="checkout-item-platform">Platform: {props.platform}</p>
+              <p className="checkout-item-price">Price: ${props.price}</p>
+              <p className="checkout-item-quantity">Quantity: {props.quantity}</p>
+              <p className="checkout-item-total-price">Total: ${props.price}</p>
+            </div>
           </div>
           <img className="checkout-item-img" src={props.img}/>
         </div>

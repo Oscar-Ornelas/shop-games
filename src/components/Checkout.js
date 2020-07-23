@@ -22,8 +22,8 @@ function Checkout(props) {
   ))
 
   return (
-    <div className="container">
-      <section className="checkout container-margin">
+    <div className="container checkout">
+      <section className="checkout-content container-margin">
         <h1 className="checkout-header">Your Cart</h1>
         {checkoutItems}
         <p>Total: ${totalPrice}</p>

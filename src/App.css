@@ -482,6 +482,7 @@ button {
 .checkout {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .checkout-header {
@@ -494,6 +495,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .checkout-item-content {
@@ -524,7 +526,31 @@ button {
 }
 
 @media (min-width: 900px) {
-  .checkout {
-    justify-content: center;
+  .checkout-item {
+    margin: 3em 0 0 0;
   }
+
+  .checkout-item-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 1em;
+  }
+
+  .checkout-item-main-info {
+    display: flex;
+    margin: 0;
+  }
+
+  .checkout-item-main-info * {
+    margin: 0 0 0 1.5em;
+  }
+
+  .checkout-item-main-info p:first-of-type {
+    margin: 0;
+  }
+
+  .fa-times {
+    margin: 0 0 0 5em;
+  }
+
 }
