@@ -553,27 +553,34 @@ button {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin: 2em 0;
 }
 
 .checkout-item-content {
   display: flex;
-  align-items: center;
 }
 
 .checkout-item-info {
   font-size: 1rem;
-  margin: 3.5em 0 0 0.5em;
+  margin: 0 0 0 0.5em;
 }
 
 .checkout-item-name {
   font-size: 1.1rem;
+  margin: 0;
 }
 
 .checkout-item-img {
   min-width: 175px;
   max-width: 175px;
+  max-height: 100px;
+  min-height: 100px;
   object-fit: cover;
   order: -1;
+}
+
+.checkout-item-main-info * {
+  margin: 0.5em 0;
 }
 
 .fa-times {
@@ -626,6 +633,12 @@ button {
   background: #101010;
 }
 
+@media (max-width: 425px) {
+  .checkout-item-img {
+    min-width: 130px;
+    max-width: 130px;
+  }
+}
 
 @media (min-width: 900px) {
   .checkout-item {
