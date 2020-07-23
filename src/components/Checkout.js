@@ -25,8 +25,18 @@ function Checkout(props) {
     <div className="container checkout">
       <section className="checkout-content container-margin">
         <h1 className="checkout-header">Your Cart</h1>
-        {checkoutItems}
-        <p>Total: ${totalPrice}</p>
+        {props.cart.length > 0 ?
+         <>
+           {checkoutItems}
+           <p>Total: ${totalPrice}</p>
+         </>
+        :
+          <div className="checkout-empty">
+            <p className="checkout-empty-cart">Looks like there is nothing in your cart!</p>
+            <button className="btn btn-empty-cart">Continue Shopping</button>
+          </div>
+        }
+
       </section>
     </div>
   )
