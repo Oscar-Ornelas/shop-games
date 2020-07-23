@@ -14,7 +14,12 @@ function CheckoutItem(props) {
   }
 
   function removeItemFromCart() {
-    return null;
+
+    props.setCart(prevCart => prevCart.filter(item => {
+      if(item.name !== props.name) {
+        return item;
+      }
+    }))
   }
 
   return (

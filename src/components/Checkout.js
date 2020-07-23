@@ -6,10 +6,11 @@ function Checkout(props) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
+    setTotalPrice(0);
     props.cart.forEach(game => {
       setTotalPrice(prevTotalPrice => prevTotalPrice += game.quantity * game.price);
     })
-  }, []);
+  }, [props.cart]);
 
   const checkoutItems = props.cart.map(game => (
     <CheckoutItem
@@ -19,6 +20,8 @@ function Checkout(props) {
       name={game.name}
       quantity={game.quantity}
       platform={game.platform}
+      cart={props.cart}
+      setCart={props.setCart}
     />
   ))
 
@@ -34,7 +37,7 @@ function Checkout(props) {
         :
           <div className="checkout-empty">
             <p className="checkout-empty-cart">Looks like there is nothing in your cart!</p>
-            <Link to="/" className="link"><button className="btn btn-empty-cart">Continue Shopping</button></Link>
+            <Link to="/" className="link btn-empty-cart"><button className="btn btn-empty-cart">Continue Shopping</button></Link>
           </div>
         }
 
