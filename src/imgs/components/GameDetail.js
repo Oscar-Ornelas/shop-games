@@ -3,14 +3,13 @@ import {useParams} from 'react-router-dom';
 import esrb_rating_m from '../imgs/esrb_rating_m.png';
 
 function GameDetail(props) {
-  const API_KEY = process.env.REACT_APP_RAWG_API_KEY;
   const [price, setPrice] = useState(null);
   const [platform, setPlatform] = useState(null);
   const [game, setGame] = useState(null);
   const {gameId} = useParams();
 
   useEffect(() => {
-    fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`, {
+    fetch(`https://api.rawg.io/api/games/${gameId}`, {
       headers: {
         'User-Agent': "shop-games"
       }
