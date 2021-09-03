@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import esrb_rating_m from '../imgs/esrb_rating_m.png';
 
 function GameDetail(props) {
@@ -8,6 +8,7 @@ function GameDetail(props) {
   const [platform, setPlatform] = useState(null);
   const [game, setGame] = useState(null);
   const {gameId} = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`, {
@@ -21,7 +22,6 @@ function GameDetail(props) {
       setGame({...data, price: gamePrice, quantity: 1, platform: data.platforms[0].platform.name});
       setPlatform(data.platforms[0].platform.name);
       setPrice(gamePrice);
-      console.log(data);
     })
   }, []);
 
@@ -29,7 +29,10 @@ function GameDetail(props) {
     e.preventDefault();
     console.log(platform);
     setGame(prevGame => ({...prevGame, platform: platform}));
-    setTimeout(() => props.setCart(prevCart => [...prevCart, game]), 500);
+    setTimeout(() => {
+      props.setCart(prevCart => [...prevCart, game]);
+      history.push(`/checkout`);
+    }, 500);
   }
 
   function changePlatform(e) {
