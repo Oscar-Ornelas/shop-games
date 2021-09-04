@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import esrb_rating_m from '../imgs/esrb_rating_m.png';
+import Modal from 'react-modal';
+Modal.setAppElement('#root');
 
 function GameDetail(props) {
   const API_KEY = process.env.REACT_APP_RAWG_API_KEY;
   const [price, setPrice] = useState(null);
   const [platform, setPlatform] = useState(null);
   const [game, setGame] = useState(null);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const {gameId} = useParams();
   const history = useHistory();
 
@@ -25,14 +28,19 @@ function GameDetail(props) {
     })
   }, []);
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   function addToCart(e) {
     e.preventDefault();
     console.log(platform);
     setGame(prevGame => ({...prevGame, platform: platform}));
-    setTimeout(() => {
-      props.setCart(prevCart => [...prevCart, game]);
-      history.push(`/checkout`);
-    }, 500);
+    setTimeout(() => props.setCart(prevCart => [...prevCart, game]), 500);
   }
 
   function changePlatform(e) {
@@ -88,7 +96,29 @@ function GameDetail(props) {
               {platforms}
             </select>
             <p className="game-detail-price">${price}</p>
-            <button className="game-detail-btn">Add To Cart</button>
+            <button onClick={openModal} className="game-detail-btn">Add To Cart</button>
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              contentLabel="Create Room Form"
+              className="modal"
+              overlayClassName="overlay"
+            >
+              <div className="modal-item-container">
+                <div className="modal-item-top modal-item-detail-top">
+                  <h3 className="modal-item-header"><i class="fas fa-check"></i>Added to Cart</h3>
+                  <i onClick={closeModal} className="fas fa-times"></i>
+                </div>
+                <div className="modal-item-product">
+                  <p className="modal-item-name">{game.name}</p>
+                  <img className="modal-item-img" src={game.background_image}/>
+                </div>
+                <div className="modal-item-btns modal-item-detail-btns">
+                  <button onClick={() => history.push('/checkout')} className="btn btn-go-to-cart">Go To Cart</button>
+                  <button onClick={closeModal} className="btn btn-keep-shopping">Keep Shopping</button>
+                </div>
+              </div>
+            </Modal>
           </form>
         </div>
       </section>

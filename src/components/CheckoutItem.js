@@ -44,17 +44,17 @@ function CheckoutItem(props) {
           className="modal"
           overlayClassName="overlay"
         >
-          <div className="remove-item-container">
-            <div className="remove-item-top">
-              <h3 className="remove-item-header">Remove product?</h3>
+          <div className="modal-item-container">
+            <div className="modal-item-top">
+              <h3 className="modal-item-header">Remove product?</h3>
               <i onClick={closeModal} className="fas fa-times"></i>
             </div>
-            <p className="remove-item-subtitle">Are you sure you want to remove the following product from the cart?</p>
-            <div className="remove-item-product">
-              <p className="remove-item-name">{props.name}</p>
-              <img className="remove-item-img" src={props.img}/>
+            <p className="modal-item-subtitle">Are you sure you want to remove the following product from the cart?</p>
+            <div className="modal-item-product">
+              <p className="modal-item-name">{props.name}</p>
+              <img className="modal-item-img" src={props.img}/>
             </div>
-            <div className="remove-item-btns">
+            <div className="modal-item-btns">
               <button onClick={closeModal} className="btn btn-cancel">Cancel</button>
               <button onClick={removeItemFromCart} className="btn btn-accept">Yes</button>
             </div>
