@@ -479,31 +479,6 @@ button {
 
 }
 
-/* Modal */
-
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  background: #fff;
-  color: #000;
-  outline: none;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
 /* Checkout */
 .checkout {
   display: flex;
@@ -622,9 +597,32 @@ button {
 
 /* Modal */
 
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .modal-item-container {
   max-width: 400px;
-  padding: 1em;
+  padding: 1.25em;
   display: flex;
   flex-direction: column;
 }
