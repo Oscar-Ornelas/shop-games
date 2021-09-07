@@ -69,7 +69,7 @@ function GameDetail(props) {
 
   const screenshotsList = screenshots && screenshots.map(screenshot => {
     return (
-      <img className="game-detail-screenshot" alt="game screenshot" src={screenshot.image}/>
+      <img key={screenshot.image} className="game-detail-screenshot" alt="game screenshot" src={screenshot.image}/>
     )
   })
 
