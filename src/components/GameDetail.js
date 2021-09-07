@@ -37,7 +37,6 @@ function GameDetail(props) {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       setScreenshots(data.results);
     })
   }, []);
@@ -70,7 +69,7 @@ function GameDetail(props) {
 
   const screenshotsList = screenshots && screenshots.map(screenshot => {
     return (
-      <img className="game-detail-esrb-rating" alt="game screenshot" src={screenshot.image}/>
+      <img className="game-detail-screenshot" alt="game screenshot" src={screenshot.image}/>
     )
   })
 
@@ -119,7 +118,7 @@ function GameDetail(props) {
             <Modal
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
-              contentLabel="Create Room Form"
+              contentLabel="Add to cart popup"
               className="modal"
               overlayClassName="overlay"
             >
@@ -150,6 +149,7 @@ function GameDetail(props) {
       </section>
 
       <section className="game-detail-screenshots">
+        <h2 className="game-detail-screenshots-header">Screenshots</h2>
         <div className="game-detail-screenshots-container">
           {screenshotsList}
         </div>
