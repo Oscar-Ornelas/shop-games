@@ -8,6 +8,7 @@ function GameDetail(props) {
   const API_KEY = process.env.REACT_APP_RAWG_API_KEY;
   const [price, setPrice] = useState(null);
   const [platform, setPlatform] = useState(null);
+  const [screenshots, setScreenshots] = useState(null);
   const [game, setGame] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
   const {gameId} = useParams();
@@ -25,6 +26,19 @@ function GameDetail(props) {
       setGame({...data, price: gamePrice, quantity: 1, platform: data.platforms[0].platform.name});
       setPlatform(data.platforms[0].platform.name);
       setPrice(gamePrice);
+    })
+  }, []);
+
+  useEffect(() => {
+    fetch(`https://api.rawg.io/api/games/${gameId}/screenshots?key=${API_KEY}`, {
+      headers: {
+        'User-Agent': "shop-games"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setScreenshots(data.results);
     })
   }, []);
 
@@ -52,7 +66,12 @@ function GameDetail(props) {
     return (
       <option key={platform.platform.name} value={platform.platform.name}>{platform.platform.name}</option>
     )
+  })
 
+  const screenshotsList = screenshots && screenshots.map(screenshot => {
+    return (
+      <img className="game-detail-esrb-rating" alt="game screenshot" src={screenshot.image}/>
+    )
   })
 
   function setMetascoreStyle() {
@@ -84,7 +103,7 @@ function GameDetail(props) {
               <h3 className="game-detail-name">{game.name}</h3>
               <p className="game-detail-publisher">{game.publishers[0].name}</p>
             </div>
-            <img className="game-detail-esrb-rating" src={esrb_rating_m}/>
+            <img className="game-detail-esrb-rating" alt="game background" src={esrb_rating_m}/>
           </div>
         </div>
         <img className="game-detail-img" src={game.background_image}/>
@@ -124,9 +143,18 @@ function GameDetail(props) {
       </section>
 
       <section className="game-detail-overview">
-        <h2 className="game-detail-header">Overview</h2>
-        <p className="game-detail-description">{game.description_raw}</p>
+        <div className="game-detail-overview-container">
+          <h2 className="game-detail-overview-header">Overview</h2>
+          <p className="game-detail-overview-description">{game.description_raw}</p>
+        </div>
       </section>
+
+      <section className="game-detail-screenshots">
+        <div className="game-detail-screenshots-container">
+          {screenshotsList}
+        </div>
+      </section>
+
     </div>
   )
 }

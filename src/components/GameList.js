@@ -13,7 +13,6 @@ function GameList(props) {
     .then(response => response.json())
     .then(data => {
       setGameList(data.results);
-      console.log(data);
     })
   }, []);
 

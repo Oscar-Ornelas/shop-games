@@ -410,15 +410,15 @@ button {
   font-weight: 700;
 }
 
-.game-detail-overview {
+.game-detail-overview-container {
   margin: 3em 0 0 0;
 }
 
-.game-detail-header {
+.game-detail-overview-header {
   text-align: center;
 }
 
-.game-detail-description {
+.game-detail-overview-description {
   line-height: 1.8;
 }
 
