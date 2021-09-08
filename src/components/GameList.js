@@ -33,6 +33,7 @@ function GameList(props) {
         }
       });
 
+
       return (
         <GameCard
           name={game.name}

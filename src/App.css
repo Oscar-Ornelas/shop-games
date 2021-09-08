@@ -297,6 +297,7 @@ button {
   justify-content: space-between;
   min-height: 325px;
   max-height: 325px;
+  min-width: 250px;
   max-width: 250px;
   margin: auto;
   border: 3px solid #7B0100;

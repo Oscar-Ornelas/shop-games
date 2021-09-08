@@ -9,7 +9,7 @@ function GameCard(props) {
       <h2 className="game-card-name">{props.name}</h2>
       <div className="game-card-info">
         <p className="game-card-platforms">{props.platforms}</p>
-        <p className="game-card-rating">{props.rating}</p>
+        <p className="game-card-rating">{props.rating > 0 ? props.rating : "N/A"}</p>
       </div>
       <img className="game-card-img" src={props.img}/>
     </div>
