@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import GameDetail from './components/GameDetail';
+import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Search from './components/Search';
 import LowerHeader from './components/LowerHeader';
@@ -23,8 +24,11 @@ function App() {
         <Route path="/detail/:gameId">
           <GameDetail cart={cart} setCart={setCart}/>
         </Route>
+        <Route path="/cart">
+          <Cart cart={cart} setCart={setCart}/>
+        </Route>
         <Route path="/checkout">
-          <Checkout cart={cart} setCart={setCart}/>
+          <Checkout/>
         </Route>
         <Route path="/search/:searchValue">
           <Search/>

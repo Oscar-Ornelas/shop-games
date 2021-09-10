@@ -132,7 +132,7 @@ function GameDetail(props) {
                   <img className="modal-item-img" src={game.background_image}/>
                 </div>
                 <div className="modal-item-btns modal-item-detail-btns">
-                  <button onClick={() => history.push('/checkout')} className="btn btn-go-to-cart">Go To Cart</button>
+                  <button onClick={() => history.push('/cart')} className="btn btn-go-to-cart">Go To Cart</button>
                   <button onClick={closeModal} className="btn btn-keep-shopping">Keep Shopping</button>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
-function CheckoutItem(props) {
+function CartItem(props) {
   const [modalIsOpen,setIsOpen] = useState(false);
 
   function openModal() {
@@ -23,18 +23,18 @@ function CheckoutItem(props) {
   }
 
   return (
-    <div className="checkout-item">
-        <div className="checkout-item-content">
-          <div className="checkout-item-info">
-            <h2 className="checkout-item-name">{props.name}</h2>
-            <div className="checkout-item-main-info">
-              <p className="checkout-item-platform">Platform: {props.platform}</p>
-              <p className="checkout-item-price">Price: ${props.price}</p>
-              <p className="checkout-item-quantity">Quantity: {props.quantity}</p>
-              <p className="checkout-item-total-price">Total: ${props.price}</p>
+    <div className="cart-item">
+        <div className="cart-item-content">
+          <div className="cart-item-info">
+            <h2 className="cart-item-name">{props.name}</h2>
+            <div className="cart-item-main-info">
+              <p className="cart-item-platform">Platform: {props.platform}</p>
+              <p className="cart-item-price">Price: ${props.price}</p>
+              <p className="cart-item-quantity">Quantity: {props.quantity}</p>
+              <p className="cart-item-total-price">Total: ${props.price}</p>
             </div>
           </div>
-          <img className="checkout-item-img" src={props.img}/>
+          <img className="cart-item-img" src={props.img}/>
         </div>
         <p onClick={openModal}><i className="fas fa-times"></i></p>
         <Modal
@@ -64,4 +64,4 @@ function CheckoutItem(props) {
   )
 }
 
-export default CheckoutItem;
+export default CartItem;
