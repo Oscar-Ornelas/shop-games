@@ -290,6 +290,71 @@ button {
   grid-gap: 2em;
 }
 
+/* Loading Icon */
+.loading-icon-container {
+  background: #101010;
+  position:fixed;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+}
+
+.loading-icon {
+  display: block;
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-left: -40px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1.5s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1.5s, opacity 1.5s linear;
+}
+
+.loading-icon-bar {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: loading-icon 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loading-icon .loading-icon-bar:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.loading-icon .loading-icon-bar:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.loading-icon .loading-icon-bar:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes loading-icon {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+
 /* GameCard */
 .game-card {
   display: flex;

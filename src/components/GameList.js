@@ -42,6 +42,14 @@ function GameList(props) {
       <div className="game-list container-margin">
         {games}
       </div>
+      <div className={`loading-icon-container ${props.gameList !== null ? "hidden" : "visible"}`}>
+        <div className={`loading-icon ${props.gameList !== null ? "hidden" : "visible"}`}>
+          <div className="loading-icon-bar"></div>
+          <div className="loading-icon-bar"></div>
+          <div className="loading-icon-bar"></div>
+        </div>
+      </div>
+
     </section>
   )
 

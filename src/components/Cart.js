@@ -17,7 +17,7 @@ function Cart(props) {
   }, [props.cart]);
 
   const checkoutItems = props.cart.map(game => (
-    <CheckoutItem
+    <CartItem
       key={game.id}
       img={game.background_image}
       price={game.price}
