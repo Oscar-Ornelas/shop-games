@@ -6,6 +6,7 @@ function Search() {
   const API_KEY = process.env.REACT_APP_RAWG_API_KEY;
   const [searchFormData, setSearchFormData] = useState({platform: "", genre: "", ordering: ""});
   const [gameList, setGameList] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
   const {searchValue} = useParams();
 
   useEffect(() => {
@@ -17,11 +18,16 @@ function Search() {
     .then(response => response.json())
     .then(data => {
       setGameList(data.results);
+      console.log(pageCount);
     })
   }, []);
 
+  useEffect(() => {
+    updateGameList();
+  }, [pageCount])
+
   function updateGameList() {
-    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&ordering=${searchFormData.ordering}&page_size=20`, {
+    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&ordering=${searchFormData.ordering}&page=${pageCount}&page_size=20`, {
       headers: {
         'User-Agent': "shop-games"
       }
@@ -30,6 +36,17 @@ function Search() {
     .then(data => {
       setGameList(data.results);
     })
+  }
+
+  function incrementPageCount() {
+    setPageCount(prevPageCount => prevPageCount + 1);
+  }
+
+  function decrementPageCount() {
+
+    setPageCount(prevPageCount => prevPageCount - 1);
+    updateGameList();
+    console.log(pageCount);
   }
 
   function handleChange(e) {
@@ -69,6 +86,11 @@ function Search() {
         <GameList
           gameList={gameList}
         />
+      </div>
+
+      <div className="change-page-btns">
+        {pageCount !== 1 ? <button onClick={decrementPageCount} className="change-page-btn btn">Previous Page</button> : ""}
+        <button onClick={incrementPageCount} className="change-page-btn btn">Next Page</button>
       </div>
 
     </div>

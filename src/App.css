@@ -298,6 +298,7 @@ button {
   right:0px;
   bottom:0px;
   left:0px;
+  z-index: 1;
 }
 
 .loading-icon {
@@ -675,12 +676,38 @@ button {
   flex-direction: column;
   align-items: center;
   padding: 10em 0 0 0;
-  margin: 0 8em;
+  margin: 0 10em;
+  margin-bottom: -50px;
 }
 
 .search-value {
   text-align: center;
   margin: 0 0 1em 0;
+  font-size: 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-form-btn {
+  margin: 1em 0 0 0;
+}
+
+.change-page-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 2em 0;
+}
+
+.change-page-btn {
+  max-width: 150px;
+  min-width: 150px;
+  margin: 0 0.5em;
 }
 
 @media (min-width:900px) {
@@ -688,6 +715,10 @@ button {
   .search-form-container {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .search-form {
+    margin: 0 0 0 10em;
   }
 
 }
