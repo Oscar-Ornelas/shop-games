@@ -44,7 +44,7 @@ function Header(props) {
           </ul>
         </nav>
         <div className="header-cart">
-          <Link to="/checkout" className="link">
+          <Link to="/cart" className="link">
             <a className="cart-link">
               <i class="fas fa-shopping-cart"></i>{props.cart.length > 0 && <span className="cart-counter">{props.cart.length}</span>}
             </a>

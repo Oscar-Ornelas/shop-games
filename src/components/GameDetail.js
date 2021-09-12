@@ -41,6 +41,12 @@ function GameDetail(props) {
     })
   }, []);
 
+  useEffect(() => {
+    if(game !== null) {
+      setGame(prevGame => ({...prevGame, platform: platform}));
+    }
+  }, [platform]);
+
   function openModal() {
     setIsOpen(true);
   }
@@ -51,9 +57,7 @@ function GameDetail(props) {
 
   function addToCart(e) {
     e.preventDefault();
-    console.log(platform);
-    setGame(prevGame => ({...prevGame, platform: platform}));
-    setTimeout(() => props.setCart(prevCart => [...prevCart, game]), 500);
+    props.setCart(prevCart => [...prevCart, game]);
   }
 
   function changePlatform(e) {
