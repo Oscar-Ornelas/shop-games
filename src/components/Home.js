@@ -6,7 +6,7 @@ function Home() {
   const [gameList, setGameList] = useState(null);
 
   useEffect(() => {
-    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&dates=2020-10-10,2021-09-01&ordering=-added&page_size=20`, {
+    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&dates=2020-10-10,2021-09-01&ordering=-added&page_size=50`, {
       headers: {
         'User-Agent': "shop-games"
       }

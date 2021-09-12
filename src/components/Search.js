@@ -4,13 +4,13 @@ import GameList from './GameList';
 
 function Search() {
   const API_KEY = process.env.REACT_APP_RAWG_API_KEY;
-  const [searchFormData, setSearchFormData] = useState({platform: "", genre: "", ordering: ""});
+  const [searchFormData, setSearchFormData] = useState({ordering: ""});
   const [gameList, setGameList] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const {searchValue} = useParams();
 
   useEffect(() => {
-    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&page_size=20`, {
+    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&page_size=50`, {
       headers: {
         'User-Agent': "shop-games"
       }
@@ -18,7 +18,6 @@ function Search() {
     .then(response => response.json())
     .then(data => {
       setGameList(data.results);
-      console.log(pageCount);
     })
   }, []);
 
@@ -27,7 +26,7 @@ function Search() {
   }, [pageCount])
 
   function updateGameList() {
-    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&ordering=${searchFormData.ordering}&page=${pageCount}&page_size=20`, {
+    fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&ordering=${searchFormData.ordering}&page=${pageCount}&page_size=50`, {
       headers: {
         'User-Agent': "shop-games"
       }
@@ -39,14 +38,15 @@ function Search() {
   }
 
   function incrementPageCount() {
-    setPageCount(prevPageCount => prevPageCount + 1);
+    if(pageCount < 4) {
+      setPageCount(prevPageCount => prevPageCount + 1);
+      window.scrollTo(0, 0);
+    }
   }
 
   function decrementPageCount() {
-
     setPageCount(prevPageCount => prevPageCount - 1);
-    updateGameList();
-    console.log(pageCount);
+    window.scrollTo(0, 0);
   }
 
   function handleChange(e) {
@@ -72,7 +72,6 @@ function Search() {
               className="search-form-input"
             >
               <option value="">Best Match</option>
-              <option value="-released">Newest to Oldest</option>
               <option value="-rating">Top Rated</option>
            </select>
           </div>
@@ -90,7 +89,7 @@ function Search() {
 
       <div className="change-page-btns">
         {pageCount !== 1 ? <button onClick={decrementPageCount} className="change-page-btn btn">Previous Page</button> : ""}
-        <button onClick={incrementPageCount} className="change-page-btn btn">Next Page</button>
+        {pageCount < 4 ? <button onClick={incrementPageCount} className="change-page-btn btn">Next Page</button> : ""}
       </div>
 
     </div>
