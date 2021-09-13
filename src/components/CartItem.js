@@ -14,7 +14,6 @@ function CartItem(props) {
   }
 
   function removeItemFromCart() {
-
     props.setCart(prevCart => prevCart.filter(item => {
       if(item.name !== props.name) {
         return item;
