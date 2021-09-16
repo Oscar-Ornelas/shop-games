@@ -18,15 +18,15 @@ function Checkout() {
   }
 
   return (
-    <div className="checkout-container container">
-      <div className="container-margin">
+    <div className="container">
+      <div className="checkout-container container-margin">
 
         <div className="checkout-inputs">
           <h2>Shipping</h2>
           <hr></hr>
           <div>
             <form className="shipping-form">
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container first-name">
                 <label className="shipping-form-input-label" for="firstName">First Name</label>
                 <input
                   name="firstName"
@@ -38,7 +38,7 @@ function Checkout() {
                   required
                 />
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container last-name">
                 <label className="shipping-form-input-label" for="lastName">Last Name</label>
                 <input
                   name="lastName"
@@ -50,7 +50,7 @@ function Checkout() {
                   required
                 />
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container address">
                 <label className="shipping-form-input-label" for="address">Address</label>
                 <input
                   name="address"
@@ -62,7 +62,7 @@ function Checkout() {
                   required
                 />
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container zip-code">
                 <label className="shipping-form-input-label" for="zipCode">Zip Code</label>
                 <input
                   name="zipCode"
@@ -74,7 +74,7 @@ function Checkout() {
                   required
                 />
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container city">
                 <label className="shipping-form-input-label" for="city">City</label>
                 <input
                   name="city"
@@ -86,7 +86,7 @@ function Checkout() {
                   required
                 />
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container state">
                 <label className="shipping-form-input-label" for="state">State</label>
                 <select
                   name="state"
@@ -149,7 +149,7 @@ function Checkout() {
                 	<option value="WY">Wyoming</option>
                 </select>
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container email">
                 <label className="shipping-form-input-label" for="email">Email</label>
                 <input
                   name="email"
@@ -161,7 +161,7 @@ function Checkout() {
                   required
                 />
               </div>
-              <div className="shipping-form-input-container">
+              <div className="shipping-form-input-container phone-number">
                 <label className="shipping-form-input-label" for="phoneNumber">Phone Number</label>
                 <input
                   name="phoneNumber"
@@ -181,20 +181,20 @@ function Checkout() {
         </div>
 
         <div className="checkout-details">
-          <div className="checkout-detail">
-            <p>Subtotal</p>
+          <div className="checkout-detail checkout-subtotal">
+            <p className="checkout-detail-label">Subtotal</p>
             <p>$49.47</p>
           </div>
           <div className="checkout-detail">
-            <p>Shipping & Handling</p>
+            <p className="checkout-detail-label">Shipping & Handling</p>
             <p>FREE</p>
           </div>
           <div className="checkout-detail">
-            <p>Tax</p>
+            <p className="checkout-detail-label">Tax</p>
             <p>$4.27</p>
           </div>
           <hr></hr>
-          <div className="checkout-detail">
+          <div className="checkout-detail checkout-total">
             <h2>Total</h2>
             <p>$53.74</p>
           </div>
