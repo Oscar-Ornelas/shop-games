@@ -57,7 +57,24 @@ function GameDetail(props) {
 
   function addToCart(e) {
     e.preventDefault();
-    props.setCart(prevCart => [...prevCart, game]);
+    if(props.cart.length !== 0) {
+      const repeatingItem = props.cart.find(item => item.name === game.name && item.platform === game.platform)
+      if(repeatingItem !== undefined) {
+        const repeatingItemIndex = props.cart.indexOf(repeatingItem);
+        let cartCopy = [...props.cart];
+        let cartItemCopy = cartCopy[repeatingItemIndex];
+        console.log(cartItemCopy);
+        cartItemCopy.quantity += 1;
+        cartCopy[repeatingItemIndex] = cartItemCopy;
+        props.setCart(cartCopy);
+
+      } else {
+        props.setCart(prevCart => [...prevCart, game]);
+      }
+    } else {
+      props.setCart(prevCart => [...prevCart, game]);
+    }
+
   }
 
   function changePlatform(e) {

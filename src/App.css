@@ -727,6 +727,13 @@ button {
   font-size: 1.3rem;
 }
 
+.checkout-btn {
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 0.75em 0;
+}
+
 .fine-print {
   font-size: 0.625rem;
   letter-spacing: 1px;

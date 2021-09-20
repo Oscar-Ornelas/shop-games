@@ -28,7 +28,7 @@ function App() {
           <Cart cart={cart} setCart={setCart}/>
         </Route>
         <Route path="/checkout">
-          <Checkout/>
+          <Checkout cart={cart}/>
         </Route>
         <Route path="/search/:searchValue">
           <Search/>
