@@ -57,22 +57,25 @@ function GameDetail(props) {
 
   function addToCart(e) {
     e.preventDefault();
-    if(props.cart.length !== 0) {
-      const repeatingItem = props.cart.find(item => item.name === game.name && item.platform === game.platform)
+    if(props.cart.cartCount !== 0) {
+      const repeatingItem = props.cart.games && props.cart.games.find(item => item.name === game.name && item.platform === game.platform)
       if(repeatingItem !== undefined) {
-        const repeatingItemIndex = props.cart.indexOf(repeatingItem);
-        let cartCopy = [...props.cart];
+        const repeatingItemIndex = props.cart.games.indexOf(repeatingItem);
+        let cartCopy = [...props.cart.games];
         let cartItemCopy = cartCopy[repeatingItemIndex];
-        console.log(cartItemCopy);
         cartItemCopy.quantity += 1;
         cartCopy[repeatingItemIndex] = cartItemCopy;
-        props.setCart(cartCopy);
+        props.setCart(prevCart => ({games: cartCopy, cartCount: prevCart.cartCount += 1}));
 
       } else {
-        props.setCart(prevCart => [...prevCart, game]);
+        let cartCopy = [...props.cart.games];
+        cartCopy.push(game);
+        props.setCart(prevCart => ({games: cartCopy, cartCount: prevCart.cartCount += 1}));
       }
     } else {
-      props.setCart(prevCart => [...prevCart, game]);
+      let cartCopy = [...props.cart.games];
+      cartCopy.push(game);
+      props.setCart(prevCart => ({games: cartCopy, cartCount: prevCart.cartCount += 1}));
     }
 
   }

@@ -11,7 +11,7 @@ import LowerHeader from './components/LowerHeader';
 
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({games: [], cartCount: 0});
   const [navSlide, setNavSlide] = useState(false);
 
   return (
