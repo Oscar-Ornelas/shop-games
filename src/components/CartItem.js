@@ -21,11 +21,7 @@ function CartItem(props) {
 
   function removeItemFromCart() {
     props.setCart(prevCart => {
-      const newCart = prevCart.games.filter(game => {
-        if(!(game.name === props.name && game.platform === props.platform && game.quantity === props.quantity)) {
-          return game;
-        }
-      })
+      const newCart = prevCart.games.filter(game => !(game.name === props.name && game.platform === props.platform))
 
       return ({games: newCart, cartCount: prevCart.cartCount -= props.quantity});
     })
