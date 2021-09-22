@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 function CartItem(props) {
   const [modalIsOpen,setIsOpen] = useState(false);
+  const [formQuantity, setFormQuantity] = useState(props.quantity);
+
+  useEffect(() => {
+    console.log(props.quantity);
+  }, [])
 
   function openModal() {
     setIsOpen(true);
@@ -13,12 +18,21 @@ function CartItem(props) {
     setIsOpen(false);
   }
 
+  function handleChange(e) {
+    const {value} = e.target;
+    setFormQuantity(value);
+  }
+
   function removeItemFromCart() {
-    props.setCart(prevCart => prevCart.filter(item => {
-      if(item.name !== props.name) {
-        return item;
-      }
-    }))
+    props.setCart(prevCart => {
+      const newCart = prevCart.games.filter(game => {
+        if(!(game.name === props.name && game.platform === props.platform)) {
+          return game;
+        }
+      })
+
+      return ({games: newCart, cartCount: prevCart.cartCount -= props.quantity});
+    })
   }
 
   return (
@@ -29,8 +43,24 @@ function CartItem(props) {
             <div className="cart-item-main-info">
               <p className="cart-item-platform">Platform: {props.platform}</p>
               <p className="cart-item-price">Price: ${props.price}</p>
-              <p className="cart-item-quantity">Quantity: {props.quantity}</p>
-              <p className="cart-item-total-price">Total: ${props.price}</p>
+              <form className="cart-item-form">
+                <label for="formQuantity" className="cart-item-quantity">Quantity:</label>
+                <select
+                  name="formQuantity"
+                  id="formQuantity"
+                  value={formQuantity}
+                  onChange={handleChange}
+                  className="cart-item-form-quantity"
+                >
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                </select>
+              </form>
+
+              <p className="cart-item-total-price">Total: ${(props.price * props.quantity).toFixed(2)}</p>
             </div>
           </div>
           <img className="cart-item-img" src={props.img}/>

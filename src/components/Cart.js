@@ -9,16 +9,17 @@ function Cart(props) {
 
   useEffect(() => {
     setGamesPrice(0);
+    setTax(0);
     props.cart.games && props.cart.games.forEach(game => {
       setGamesPrice(prevGamesPrice => prevGamesPrice += game.quantity * game.price);
       setTax(prevTax => prevTax += Math.round(game.quantity * game.price * 0.08 * 100) / 100);
     })
 
-  }, [props.cart]);
+  }, [props.cart.games]);
 
   const checkoutItems = props.cart.games && props.cart.games.map(game => (
     <CartItem
-      key={game.id}
+      key={game.platform}
       img={game.background_image}
       price={game.price}
       name={game.name}
