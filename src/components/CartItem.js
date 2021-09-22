@@ -6,10 +6,6 @@ function CartItem(props) {
   const [modalIsOpen,setIsOpen] = useState(false);
   const [formQuantity, setFormQuantity] = useState(props.quantity);
 
-  useEffect(() => {
-    console.log(props.quantity);
-  }, [])
-
   function openModal() {
     setIsOpen(true);
   }
@@ -26,7 +22,7 @@ function CartItem(props) {
   function removeItemFromCart() {
     props.setCart(prevCart => {
       const newCart = prevCart.games.filter(game => {
-        if(!(game.name === props.name && game.platform === props.platform)) {
+        if(!(game.name === props.name && game.platform === props.platform && game.quantity === props.quantity)) {
           return game;
         }
       })

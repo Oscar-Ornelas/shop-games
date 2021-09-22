@@ -59,15 +59,10 @@ function GameDetail(props) {
     e.preventDefault();
     if(props.cart.cartCount !== 0) {
       const repeatingItem = props.cart.games && props.cart.games.find(item => item.name === game.name && item.platform === game.platform)
-      console.log(repeatingItem);
-      console.log(props.cart.games);
       if(repeatingItem) {
         const repeatingItemIndex = props.cart.games.indexOf(repeatingItem);
-        console.log(repeatingItemIndex);
         let cartCopy = [...props.cart.games];
-        console.log(cartCopy);
         let cartItemCopy = cartCopy[repeatingItemIndex];
-        console.log(cartItemCopy);
         cartItemCopy.quantity += 1;
         cartCopy[repeatingItemIndex] = cartItemCopy;
         props.setCart(prevCart => ({games: cartCopy, cartCount: prevCart.cartCount += 1}));
