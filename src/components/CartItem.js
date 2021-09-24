@@ -17,6 +17,19 @@ function CartItem(props) {
   function handleChange(e) {
     const {value} = e.target;
     setFormQuantity(value);
+
+    props.setCart(prevCart => {
+      const updatedGame = prevCart.games.find(game => (game.name === props.name && game.platform === props.platform));
+      const updatedGameIndex = prevCart.games.indexOf(updatedGame);
+      const cartCopy = [...prevCart.games];
+      let cartCopyCount = 0;
+      updatedGame.quantity = value;
+      cartCopy[updatedGameIndex] = updatedGame;
+      cartCopy.forEach(game => cartCopyCount += parseInt(game.quantity));
+
+      return ({games: cartCopy, cartCount: Math.round(cartCopyCount)})
+    })
+
   }
 
   function removeItemFromCart() {

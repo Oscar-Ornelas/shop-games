@@ -23,7 +23,7 @@ function GameDetail(props) {
     .then(response => response.json())
     .then(data => {
       const gamePrice = parseInt(data.released.substring(0,4)) < 2015 ? 29.99 : 59.99;
-      setGame({...data, price: gamePrice, quantity: 1, platform: data.platforms[0].platform.name});
+      setGame({...data, price: gamePrice, quantity: 1, platform: data.platforms[0].platform.name, key: Math.floor(Math.random() * (999999 - 100000) + 100000)});
       setPlatform(data.platforms[0].platform.name);
       setPrice(gamePrice);
     })
@@ -62,11 +62,9 @@ function GameDetail(props) {
       if(repeatingItem) {
         const repeatingItemIndex = props.cart.games.indexOf(repeatingItem);
         let cartCopy = [...props.cart.games];
-        let cartItemCopy = cartCopy[repeatingItemIndex];
-        cartItemCopy.quantity += 1;
-        cartCopy[repeatingItemIndex] = cartItemCopy;
+        repeatingItem.quantity = parseInt(repeatingItem.quantity) + 1;
+        cartCopy[repeatingItemIndex] = repeatingItem;
         props.setCart(prevCart => ({games: cartCopy, cartCount: prevCart.cartCount += 1}));
-
       } else {
         game.quantity = 1;
         props.setCart(prevCart => ({games: [...prevCart.games, game], cartCount: prevCart.cartCount += 1}));

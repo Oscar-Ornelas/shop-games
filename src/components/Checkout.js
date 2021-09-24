@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function Checkout() {
+function Checkout(props) {
   const [shippingFormData, setShippingFormData] = useState({
     firstName: "",
     LastName: "",
@@ -11,11 +11,33 @@ function Checkout() {
     email: "",
     phoneNumber: ""
   })
+  const [displayCart, setDisplayCart] = useState(false);
 
   function handleChange(e) {
     const {name, value} = e.target;
     setShippingFormData(prevShippingFormData => ({...prevShippingFormData, [name] : value}));
   }
+
+  function showCart() {
+    setDisplayCart(prevDisplayCart => !prevDisplayCart);
+  }
+
+  const cartImages = props.cart.games && props.cart.games.map(game => (
+    <img key={game.key} className="checkout-cart-image" src={game.background_image} alt="Game cover"/>
+  ))
+
+  const cartItems = props.cart.games && props.cart.games.map(game => (
+    <div className="checkout-cart-item">
+      <div className="checkout-cart-item-main">
+        <img className="checkout-cart-image" src={game.background_image} alt="Game cover"/>
+        <div className="checkout-cart-item-details">
+          <p>{game.name} ({game.platform})</p>
+          <p>Quantity: {game.quantity}</p>
+        </div>
+      </div>
+      <p>{(game.price * game.quantity).toFixed(2)}</p>
+    </div>
+  ))
 
   return (
     <div className="container">
@@ -200,9 +222,26 @@ function Checkout() {
           </div>
           <hr></hr>
 
-          <button className="btn checkout-btn">Place Order</button>
+          <div>
+            <button className="btn checkout-btn">Place Order</button>
+            <p className="fine-print">By tapping Place Order, you agree to ShopGames' Privacy Policy and Conditions of Use.</p>
+          </div>
 
-          <p className="fine-print">By tapping Place Order, you agree to ShopGames' Privacy Policy and Conditions of Use.</p>
+          <div className="checkout-cart">
+            <div className="checkout-cart-header">
+              <p>Cart ({props.cart.cartCount} items)</p>
+              <p onClick={showCart}>{displayCart === true ? <i class="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</p>
+            </div>
+
+            <div className={`checkout-cart-items ${displayCart ? "" : "hidden-cart"}`}>
+              {cartItems}
+            </div>
+
+            <div className={`checkout-cart-images ${displayCart ? "hidden-cart" : ""}`}>
+              {cartImages}
+            </div>
+
+          </div>
         </div>
 
       </div>

@@ -19,7 +19,7 @@ function Cart(props) {
 
   const checkoutItems = props.cart.games && props.cart.games.map(game => (
     <CartItem
-      key={Math.floor(Math.random() * (999999 - 100000) + 100000)}
+      key={game.key}
       img={game.background_image}
       price={game.price}
       name={game.name}

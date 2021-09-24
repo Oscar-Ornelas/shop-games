@@ -747,6 +747,37 @@ hr {
   margin: 0 0 1.5em 0;
 }
 
+.checkout-cart-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-cart-image {
+  max-width: 80px;
+  height: 60px;
+  display: inline;
+  margin: 0.25em;
+}
+
+.checkout-cart-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-cart-item-main {
+  display: flex;
+  align-items: center;
+}
+
+.checkout-cart-item-details {
+  font-size: 1rem;
+  margin: 0 0 0 1em;
+}
+
+.hidden-cart {
+  display: none;
+}
+
 @media (min-width: 550px) {
 
   .shipping-form-input-container {
