@@ -678,18 +678,23 @@ button {
   margin: 0 0 2em 0;
 }
 
+.credit-card-form-input-container,
 .shipping-form-input-container {
-  display: flex;
-  flex-direction: column;
   border: 1px solid rgba(255, 255, 255, .5);
   padding: 0.5em;
   border-radius: 2px;
+}
+
+.shipping-form-input-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .shipping-form-input-label {
   font-size: 1.05rem;
 }
 
+.credit-card-form-input,
 .shipping-form-input {
   background: none;
   border: none;
@@ -697,7 +702,9 @@ button {
 }
 
 .shipping-form-input:hover,
-.shipping-form-input:focus {
+.shipping-form-input:focus,
+.credit-card-form-input:hover,
+.credit-card-form-input:focus {
   outline: none;
 }
 
@@ -717,6 +724,24 @@ button {
   padding: 2em;
   background: none;
   text-decoration: underline;
+}
+
+.credit-card-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.card-number {
+  grid-column: 1 / -1;
+}
+
+.card-date {
+  grid-column: 1 / 2;
+}
+
+.card-cvv {
+  grid-column: 2 / 4;
 }
 
 .checkout-details {
@@ -812,7 +837,7 @@ hr {
 
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1025px) {
 
   .checkout-container {
     display: grid;
@@ -858,6 +883,15 @@ hr {
 
   .phone-number {
     grid-column: 3 / 5;
+  }
+
+  .card-number {
+    grid-column: 1 / 2;
+  }
+  
+  .card-date,
+  .card-cvv {
+    grid-column: auto;
   }
 
 }

@@ -221,10 +221,19 @@ function Checkout(props) {
             </div>
 
             <div>
+            <h2>Payment</h2>
+            <hr></hr>
               <form className="credit-card-form">
-                <input type="tel" inputmode="numeric" pattern="[0-9]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="Card Number" required/>
-                <input type="tel" pattern="^[0-9/]*${7}" maxlength="7" placeholder="MM/YYYY" required/>
-                <input type="tel" pattern="[0-9]{3-4}" maxlength="4" placeholder="CVV" required/>
+                <div className="credit-card-form-input-container card-number">
+                  <input className="credit-card-form-input" type="tel" inputmode="numeric" pattern="[0-9]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="Card Number" required/>
+                </div>
+                <div className="credit-card-form-input-container card-date">
+                  <input className="credit-card-form-input" type="tel" pattern="^[0-9/]*${7}" maxlength="7" placeholder="MM/YYYY" required/>
+                </div>
+                <div className="credit-card-form-input-container card-cvv">
+                  <input className="credit-card-form-input" type="tel" pattern="[0-9]{3-4}" maxlength="4" placeholder="CVV" required/>
+                </div>
+
               </form>
             </div>
 
