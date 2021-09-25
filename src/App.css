@@ -701,6 +701,24 @@ button {
   outline: none;
 }
 
+.shipping-form-post-submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shipping-form-post-submit-info {
+  font-size: 1rem;
+  margin: 0 0 0.75em 0;
+}
+
+.shipping-form-post-submit-btn {
+  font-size: 1.05rem;
+  padding: 2em;
+  background: none;
+  text-decoration: underline;
+}
+
 .checkout-details {
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 1em;
@@ -774,7 +792,7 @@ hr {
   margin: 0 0 0 1em;
 }
 
-.hidden-cart {
+.hidden-checkout {
   display: none;
 }
 
@@ -798,7 +816,7 @@ hr {
 
   .checkout-container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2em;
   }
 

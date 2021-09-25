@@ -11,11 +11,18 @@ function Checkout(props) {
     email: "",
     phoneNumber: ""
   })
+  const [displayShippingForm, setDisplayShippingForm] = useState(true);
   const [displayCart, setDisplayCart] = useState(false);
 
   function handleChange(e) {
     const {name, value} = e.target;
     setShippingFormData(prevShippingFormData => ({...prevShippingFormData, [name] : value}));
+  }
+
+  function handleShippingFormSubmit(e) {
+    e.preventDefault();
+    setDisplayShippingForm(false);
+
   }
 
   function showCart() {
@@ -47,7 +54,7 @@ function Checkout(props) {
           <h2>Shipping</h2>
           <hr></hr>
           <div>
-            <form className="shipping-form">
+            <form onSubmit={handleShippingFormSubmit} className={`shipping-form ${displayShippingForm ? "" : "hidden-checkout"}`}>
               <div className="shipping-form-input-container first-name">
                 <label className="shipping-form-input-label" for="firstName">First Name</label>
                 <input
@@ -198,7 +205,30 @@ function Checkout(props) {
                 />
               </div>
 
+              <button className="btn checkout-btn">Save & Continue</button>
             </form>
+
+            <div className={`shipping-form-post-submit ${displayShippingForm ? "hidden-checkout" : ""}`}>
+              <div>
+                <p className="shipping-form-post-submit-info">{shippingFormData.firstName + " " + shippingFormData.lastName}</p>
+                <p className="shipping-form-post-submit-info">{shippingFormData.address}</p>
+                <p className="shipping-form-post-submit-info">{shippingFormData.city + ", " + shippingFormData.state + ", " + shippingFormData.zipCode}</p>
+                <p className="shipping-form-post-submit-info">{shippingFormData.phoneNumber}</p>
+              </div>
+              <div>
+                <button onClick={() => setDisplayShippingForm(true)} className="btn shipping-form-post-submit-btn">Edit</button>
+              </div>
+            </div>
+
+            <div>
+              <form className="credit-card-form">
+                <input type="tel" inputmode="numeric" pattern="[0-9]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="Card Number" required/>
+                <input type="tel" pattern="^[0-9/]*${7}" maxlength="7" placeholder="MM/YYYY" required/>
+                <input type="tel" pattern="[0-9]{3-4}" maxlength="4" placeholder="CVV" required/>
+              </form>
+            </div>
+
+
           </div>
         </div>
 
@@ -233,11 +263,11 @@ function Checkout(props) {
               <p onClick={showCart}>{displayCart === true ? <i class="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</p>
             </div>
 
-            <div className={`checkout-cart-items ${displayCart ? "" : "hidden-cart"}`}>
+            <div className={`checkout-cart-items ${displayCart ? "" : "hidden-checkout"}`}>
               {cartItems}
             </div>
 
-            <div className={`checkout-cart-images ${displayCart ? "hidden-cart" : ""}`}>
+            <div className={`checkout-cart-images ${displayCart ? "hidden-checkout" : ""}`}>
               {cartImages}
             </div>
 
