@@ -708,18 +708,23 @@ button {
   outline: none;
 }
 
-.shipping-form-post-submit {
+.shipping-form-btn {
+  grid-column: 4 / 5;
+}
+
+.post-form-submit {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 0 2.5em 0;
 }
 
-.shipping-form-post-submit-info {
+.post-submit-info {
   font-size: 1rem;
   margin: 0 0 0.75em 0;
 }
 
-.shipping-form-post-submit-btn {
+.post-form-submit-btn {
   font-size: 1.05rem;
   padding: 2em;
   background: none;
@@ -732,16 +737,24 @@ button {
   grid-gap: 1em;
 }
 
+.credit-card-form-header {
+  margin: 1em 0 0 0;
+}
+
 .card-number {
   grid-column: 1 / -1;
 }
 
-.card-date {
+.card-expiry {
   grid-column: 1 / 2;
 }
 
 .card-cvv {
   grid-column: 2 / 4;
+}
+
+.credit-card-form-btn {
+  grid-column: 3 / 4;
 }
 
 .checkout-details {
@@ -775,6 +788,16 @@ button {
   font-size: 1.25rem;
   font-weight: bold;
   margin: 0 0 0.75em 0;
+}
+
+.disabled-btn {
+  background-color: rgba(121, 1, 0, 0.2);
+}
+
+.disabled-btn:hover,
+.disabled-btn:focus {
+  cursor: auto;
+  transform: scale(1);
 }
 
 .fine-print {
@@ -888,8 +911,8 @@ hr {
   .card-number {
     grid-column: 1 / 2;
   }
-  
-  .card-date,
+
+  .card-expiry,
   .card-cvv {
     grid-column: auto;
   }
