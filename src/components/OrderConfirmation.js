@@ -11,7 +11,7 @@ function OrderConfirmation() {
   }, [])
 
   return (
-    <div className="order-confirmation-container">
+    <section className="order-confirmation-container">
       <h1 className="order-confirmation-header">Order Success!</h1>
       <i className="far fa-check-circle"></i>
       <p className="order-confirmation-subtitle">
@@ -19,7 +19,7 @@ function OrderConfirmation() {
         A confirmation email will be sent to your inbox soon.
       </p>
       <p className="order-confirmation-redirect">Redirecting to Home page...</p>
-    </div>
+    </section>
   )
 }
 

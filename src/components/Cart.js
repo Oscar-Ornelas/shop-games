@@ -3,16 +3,14 @@ import {Link, useHistory} from 'react-router-dom';
 import CartItem from './CartItem';
 
 function Cart(props) {
-  const [gamesPrice, setGamesPrice] = useState(0);
-  const [tax, setTax] = useState(0);
   const history = useHistory();
 
   useEffect(() => {
-    setGamesPrice(0);
-    setTax(0);
+    props.setCart(prevCart => ({...prevCart, gamesPrice: 0, tax: 0}));
+
     props.cart.games && props.cart.games.forEach(game => {
-      setGamesPrice(prevGamesPrice => prevGamesPrice += game.quantity * game.price);
-      setTax(prevTax => prevTax += Math.round(game.quantity * game.price * 0.08 * 100) / 100);
+      props.setCart(prevCart => ({...prevCart, gamesPrice: prevCart.gamesPrice += game.quantity * game.price}));
+      props.setCart(prevCart => ({...prevCart, tax: prevCart.tax += Math.round(game.quantity * game.price * 0.08 * 100) / 100}));
     })
 
   }, [props.cart.games]);
@@ -39,8 +37,8 @@ function Cart(props) {
            {checkoutItems}
            <p>Total Items: {props.cart.cartCount}</p>
            <p>Shipping & Handling: FREE</p>
-           <p>Taxes: ${tax.toFixed(2)}</p>
-           <p>Total: ${tax + gamesPrice}</p>
+           <p>Taxes: ${props.cart.tax ? props.cart.tax.toFixed(2) : ""}</p>
+           <p>Total: ${props.cart.tax ? props.cart.tax + props.cart.gamesPrice : ""}</p>
            <button onClick={() => history.push('/checkout')} className="btn checkout-btn">Proceed To Checkout</button>
          </>
         :

@@ -247,7 +247,7 @@ function Checkout(props) {
               </div>
             </div>
 
-            <div className={`${displayShippingForm ? "hidden-checkout" : ""}`}>
+            <section className={`${displayShippingForm ? "hidden-checkout" : ""}`}>
               <h2>Payment</h2>
               <hr></hr>
                 <form onSubmit={handleCreditCardFormSubmit} className={`credit-card-form ${displayCreditCardForm ? "" : "hidden-checkout"}`}>
@@ -308,15 +308,15 @@ function Checkout(props) {
                   </div>
                 </div>
 
-            </div>
+            </section>
 
           </div>
         </div>
 
-        <div className="checkout-details">
+        <section className="checkout-details">
           <div className="checkout-detail checkout-subtotal">
             <p className="checkout-detail-label">Subtotal</p>
-            <p>$49.47</p>
+            <p>{props.cart.gamesPrice}</p>
           </div>
           <div className="checkout-detail">
             <p className="checkout-detail-label">Shipping & Handling</p>
@@ -324,12 +324,12 @@ function Checkout(props) {
           </div>
           <div className="checkout-detail">
             <p className="checkout-detail-label">Tax</p>
-            <p>$4.27</p>
+            <p>{props.cart.tax.toFixed(2)}</p>
           </div>
           <hr></hr>
           <div className="checkout-detail checkout-total">
             <h2>Total</h2>
-            <p>$53.74</p>
+            <p>{props.cart.tax + props.cart.gamesPrice}</p>
           </div>
           <hr></hr>
 
@@ -359,7 +359,7 @@ function Checkout(props) {
             </div>
 
           </div>
-        </div>
+        </section>
 
       </div>
     </div>
