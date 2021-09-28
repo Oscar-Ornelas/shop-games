@@ -19,20 +19,28 @@ function Checkout(props) {
   const [displayCreditCardForm, setDisplayCreditCardForm] = useState(true);
   const [displayShippingForm, setDisplayShippingForm] = useState(true);
   const [displayCart, setDisplayCart] = useState(false);
+  const [buttonDisable, setButtonDisable] = useState({shippingFormSubmit: false, creditCardFormSubmit: false});
 
-  function handleChange(e) {
+  function handleShippingFormChange(e) {
     const {name, value} = e.target;
     setShippingFormData(prevShippingFormData => ({...prevShippingFormData, [name] : value}));
+  }
+
+  function handleCreditCardFormChange(e) {
+    const {name, value} = e.target;
+    setCreditCardFormData(prevCreditCardFormData => ({...prevCreditCardFormData, [name] : value}));
   }
 
   function handleShippingFormSubmit(e) {
     e.preventDefault();
     setDisplayShippingForm(false);
+    setButtonDisable(prevButtonDisable => ({...prevButtonDisable, shippingFormSubmit: true}));
   }
 
   function handleCreditCardFormSubmit(e) {
     e.preventDefault();
     setDisplayCreditCardForm(false);
+    setButtonDisable(prevButtonDisable => ({...prevButtonDisable, creditCardFormSubmit: true}));
   }
 
   function showCart() {
@@ -72,7 +80,7 @@ function Checkout(props) {
                   id="firstName"
                   type="text"
                   value={shippingFormData.firstName}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -84,7 +92,7 @@ function Checkout(props) {
                   id="lastName"
                   type="text"
                   value={shippingFormData.lastName}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -96,7 +104,7 @@ function Checkout(props) {
                   id="address"
                   type="text"
                   value={shippingFormData.address}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -108,7 +116,7 @@ function Checkout(props) {
                   id="zipCode"
                   type="text"
                   value={shippingFormData.zipCode}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -120,7 +128,7 @@ function Checkout(props) {
                   id="city"
                   type="text"
                   value={shippingFormData.city}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -131,7 +139,7 @@ function Checkout(props) {
                   name="state"
                   id="state"
                   value={shippingFormData.state}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 >
@@ -195,7 +203,7 @@ function Checkout(props) {
                   id="email"
                   type="email"
                   value={shippingFormData.email}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -209,7 +217,7 @@ function Checkout(props) {
                   pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                   placeholder="1234567890"
                   value={shippingFormData.phoneNumber}
-                  onChange={handleChange}
+                  onChange={handleShippingFormChange}
                   className="shipping-form-input"
                   required
                 />
@@ -236,13 +244,46 @@ function Checkout(props) {
                 <form onSubmit={handleCreditCardFormSubmit} className={`credit-card-form ${displayCreditCardForm ? "" : "hidden-checkout"}`}>
                   <h3 className="credit-card-form-header">Credit Card</h3>
                   <div className="credit-card-form-input-container card-number">
-                    <input className="credit-card-form-input" type="tel" inputmode="numeric" pattern="[0-9]{16}" autocomplete="cc-number" maxlength="16" placeholder="Card Number" required/>
+                    <input
+                      name="cardNumber"
+                      value={creditCardFormData.cardNumber}
+                      onChange={handleCreditCardFormChange}
+                      className="credit-card-form-input"
+                      type="tel"
+                      inputmode="numeric"
+                      pattern="[0-9]{16}"
+                      autoComplete="cc-number"
+                      maxLength="16"
+                      placeholder="Card Number"
+                      required
+                    />
                   </div>
                   <div className="credit-card-form-input-container card-expiry">
-                    <input className="credit-card-form-input" type="tel" pattern="^[0-9/]*${7}" maxlength="7" placeholder="MM/YYYY" required/>
+                    <input
+                      name="cardExpiry"
+                      value={creditCardFormData.cardExpiry}
+                      onChange={handleCreditCardFormChange}
+                      className="credit-card-form-input"
+                      type="tel"
+                      pattern="[0-9/]{7}"
+                      minLength="7"
+                      maxLength="7"
+                      placeholder="MM/YYYY"
+                      required
+                    />
                   </div>
                   <div className="credit-card-form-input-container card-cvv">
-                    <input className="credit-card-form-input" type="tel" pattern="[0-9]{3-4}" maxlength="4" placeholder="CVV" required/>
+                    <input
+                      name="cardCvv"
+                      value={creditCardFormData.cardCvv}
+                      onChange={handleCreditCardFormChange}
+                      className="credit-card-form-input"
+                      type="tel"
+                      pattern="[0-9]{3}"
+                      maxLength="3"
+                      placeholder="CVV"
+                      required
+                    />
                   </div>
 
                   <button className="btn checkout-btn credit-card-form-btn">Save & Continue</button>
@@ -250,8 +291,8 @@ function Checkout(props) {
 
                 <div className={`post-form-submit ${displayCreditCardForm ? "hidden-checkout" : ""}`}>
                   <div>
-                    <p className="post-submit-info"></p>
-                    <p className="post-submit-info"></p>
+                    <p className="post-submit-info">Card Ending in {creditCardFormData.cardNumber.slice(-4)}</p>
+                    <p className="post-submit-info">Expires {creditCardFormData.cardExpiry}</p>
                   </div>
                   <div>
                     <button onClick={() => setDisplayCreditCardForm(true)} className="btn post-form-submit-btn">Change Payment</button>
@@ -284,7 +325,12 @@ function Checkout(props) {
           <hr></hr>
 
           <div>
-            <button disabled="true" className="btn checkout-btn checkout-detail-btn disabled-btn">Place Order</button>
+            <button
+              className={`btn checkout-btn checkout-detail-btn ${buttonDisable.shippingFormSubmit && buttonDisable.creditCardFormSubmit ? "" : "disabled-btn"}`}
+              disabled={buttonDisable.shippingFormSubmit && buttonDisable.creditCardFormSubmit}
+            >
+              Place Order
+            </button>
             <p className="fine-print">By tapping Place Order, you agree to ShopGames' Privacy Policy and Conditions of Use.</p>
           </div>
 
