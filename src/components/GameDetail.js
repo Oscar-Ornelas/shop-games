@@ -115,6 +115,7 @@ function GameDetail(props) {
     game &&
     <div className="game-detail-container container">
       <section className="game-detail-grid container-margin">
+        <p onClick={() => history.goBack()} className="btn-back"><i className="fas fa-chevron-left"></i></p>
         <div className="game-detail-main-info">
           <div className="game-detail-main-info-content">
             <div>
