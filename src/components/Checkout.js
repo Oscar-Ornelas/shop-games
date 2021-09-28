@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 
 function Checkout(props) {
   const [shippingFormData, setShippingFormData] = useState({
@@ -20,6 +21,7 @@ function Checkout(props) {
   const [displayShippingForm, setDisplayShippingForm] = useState(true);
   const [displayCart, setDisplayCart] = useState(false);
   const [buttonDisable, setButtonDisable] = useState({shippingFormSubmit: false, creditCardFormSubmit: false});
+  const history = useHistory();
 
   function handleShippingFormChange(e) {
     const {name, value} = e.target;
@@ -45,6 +47,13 @@ function Checkout(props) {
 
   function showCart() {
     setDisplayCart(prevDisplayCart => !prevDisplayCart);
+  }
+
+  function completeOrder(e) {
+    const {disabled} = e.target;
+    if(!disabled) {
+      history.push("/order-confirmation");
+    }
   }
 
   const cartImages = props.cart.games && props.cart.games.map(game => (
@@ -327,7 +336,8 @@ function Checkout(props) {
           <div>
             <button
               className={`btn checkout-btn checkout-detail-btn ${buttonDisable.shippingFormSubmit && buttonDisable.creditCardFormSubmit ? "" : "disabled-btn"}`}
-              disabled={buttonDisable.shippingFormSubmit && buttonDisable.creditCardFormSubmit}
+              disabled={!(buttonDisable.shippingFormSubmit && buttonDisable.creditCardFormSubmit)}
+              onClick={completeOrder}
             >
               Place Order
             </button>

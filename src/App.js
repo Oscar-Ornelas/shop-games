@@ -6,6 +6,7 @@ import Home from './components/Home';
 import GameDetail from './components/GameDetail';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import OrderConfirmation from './components/OrderConfirmation';
 import Search from './components/Search';
 import LowerHeader from './components/LowerHeader';
 
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/checkout">
           <Checkout cart={cart}/>
+        </Route>
+        <Route path="/order-confirmation">
+          <OrderConfirmation/>
         </Route>
         <Route path="/search/:searchValue">
           <Search/>
