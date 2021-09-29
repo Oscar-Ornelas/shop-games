@@ -15,10 +15,10 @@ function Header(props) {
     props.setNavSlide(prevNavSlide => !prevNavSlide);
   }
 
-  function changeRoute() {
+  function changeRoute(e) {
+    e.preventDefault();
     if(search !== "") {
       history.push(`/search/${search}`);
-      window.location.reload();
     }
   }
 

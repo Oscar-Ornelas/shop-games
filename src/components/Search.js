@@ -19,7 +19,7 @@ function Search() {
     .then(data => {
       setGameList(data.results);
     })
-  }, []);
+  }, [searchValue]);
 
   useEffect(() => {
     updateGameList();
