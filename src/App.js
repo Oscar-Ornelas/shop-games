@@ -28,6 +28,9 @@ function App() {
         <Route path="/cart">
           <Cart cart={cart} setCart={setCart}/>
         </Route>
+        <Route path="/search/:searchValue">
+          <Search/>
+        </Route>
         {cart.cartCount > 0 ?
           <>
             <Route path="/checkout">
@@ -40,9 +43,7 @@ function App() {
           :
           <Redirect to="/"/>
         }
-        <Route path="/search/:searchValue">
-          <Search/>
-        </Route>
+
       </Switch>
       <LowerHeader cart={cart} navSlide={navSlide} setNavSlide={setNavSlide}/>
     </>
