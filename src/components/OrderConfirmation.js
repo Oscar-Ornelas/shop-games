@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 
-function OrderConfirmation() {
+function OrderConfirmation(props) {
   const history = useHistory();
 
   useEffect(() => {
+    props.setCart({games: [], cartCount: 0, gamesPrice: 0, tax: 0});
     setTimeout(() => {
       history.push("/");
     }, 8000)

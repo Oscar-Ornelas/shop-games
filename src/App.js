@@ -32,7 +32,7 @@ function App() {
           <Checkout cart={cart}/>
         </Route>
         <Route path="/order-confirmation">
-          <OrderConfirmation/>
+          <OrderConfirmation setCart={setCart}/>
         </Route>
         <Route path="/search/:searchValue">
           <Search/>
