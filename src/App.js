@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -28,12 +28,18 @@ function App() {
         <Route path="/cart">
           <Cart cart={cart} setCart={setCart}/>
         </Route>
-        <Route path="/checkout">
-          <Checkout cart={cart}/>
-        </Route>
-        <Route path="/order-confirmation">
-          <OrderConfirmation setCart={setCart}/>
-        </Route>
+        {cart.cartCount > 0 ?
+          <>
+            <Route path="/checkout">
+              <Checkout cart={cart}/>
+            </Route>
+            <Route path="/order-confirmation">
+              <OrderConfirmation setCart={setCart}/>
+            </Route>
+          </>
+          :
+          <Redirect to="/"/>
+        }
         <Route path="/search/:searchValue">
           <Search/>
         </Route>
