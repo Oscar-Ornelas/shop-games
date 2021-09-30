@@ -9,6 +9,7 @@ import Checkout from './components/Checkout';
 import OrderConfirmation from './components/OrderConfirmation';
 import Search from './components/Search';
 import LowerHeader from './components/LowerHeader';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         }
 
       </Switch>
+      <Footer/>
       <LowerHeader cart={cart} navSlide={navSlide} setNavSlide={setNavSlide}/>
     </>
   );
