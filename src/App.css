@@ -307,12 +307,11 @@ button {
 /* Loading Icon */
 .loading-icon-container {
   background: #101010;
-  position:fixed;
+  position: fixed;
   top:0px;
   right:0px;
   bottom:0px;
   left:0px;
-  z-index: 1;
 }
 
 .loading-icon {
@@ -329,7 +328,6 @@ button {
   visibility: visible;
   opacity: 1;
   transition: opacity 1.5s linear;
-  z-index: 1;
 }
 
 .hidden {
@@ -987,7 +985,7 @@ hr {
   align-items: center;
   padding: 10em 0 0 0;
   margin: 0 10em;
-  margin-bottom: -50px;
+  margin-bottom: -150px;
 }
 
 .search-value {
@@ -1007,11 +1005,16 @@ hr {
   margin: 1em 0 0 0;
 }
 
+.search-game-list {
+  margin: 0 0 10em 0;
+}
+
 .change-page-btns {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 0 2em 0;
+  margin-bottom: -100px;
 }
 
 .change-page-btn {

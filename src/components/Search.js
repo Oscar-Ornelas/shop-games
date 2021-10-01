@@ -81,7 +81,7 @@ function Search() {
       </div>
 
 
-      <div>
+      <div className="search-game-list">
         <GameList
           gameList={gameList}
         />

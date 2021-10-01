@@ -112,70 +112,82 @@ function GameDetail(props) {
   }
 
   return (
-    game &&
-    <div className="game-detail-container container">
-      <section className="game-detail-grid container-margin">
-        <p onClick={() => history.goBack()} className="btn-back"><i className="fas fa-chevron-left"></i></p>
-        <div className="game-detail-main-info">
-          <div className="game-detail-main-info-content">
-            <div>
-              <h3 className="game-detail-name">{game.name}</h3>
-              <p className="game-detail-publisher">{game.publishers[0].name}</p>
-            </div>
-            <img className="game-detail-esrb-rating" alt="game background" src={esrb_rating_m}/>
-          </div>
-        </div>
-        <img className="game-detail-img" src={game.background_image}/>
-        <div className="game-detail-form-container">
-          <p className="game-detail-metascore">Metascore <span style={setMetascoreStyle()}>{game.metacritic || "N/A"}</span></p>
-          <form onSubmit={addToCart} className="game-detail-form">
-            <label className="game-detail-platform-label" htmlFor="platform">Platform</label>
-            <select className="game-detail-platform" onChange={changePlatform} name="platform" id="platform">
-              {platforms}
-            </select>
-            <p className="game-detail-price">${price}</p>
-            <button onClick={openModal} className="game-detail-btn">Add To Cart</button>
-            <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              contentLabel="Add to cart popup"
-              className="modal"
-              overlayClassName="overlay"
-            >
-              <div className="modal-item-container">
-                <div className="modal-item-top modal-item-detail-top">
-                  <h3 className="modal-item-header"><i class="fas fa-check"></i>Added to Cart</h3>
-                  <i onClick={closeModal} className="fas fa-times"></i>
-                </div>
-                <div className="modal-item-product">
-                  <p className="modal-item-name">{game.name}</p>
-                  <img className="modal-item-img" src={game.background_image}/>
-                </div>
-                <div className="modal-item-btns modal-item-detail-btns">
-                  <button onClick={() => history.push('/cart')} className="btn btn-go-to-cart">Go To Cart</button>
-                  <button onClick={closeModal} className="btn btn-keep-shopping">Keep Shopping</button>
-                </div>
+    <>
+    {game &&
+      <div className="game-detail-container container">
+        <section className="game-detail-grid container-margin">
+          <p onClick={() => history.goBack()} className="btn-back"><i className="fas fa-chevron-left"></i></p>
+          <div className="game-detail-main-info">
+            <div className="game-detail-main-info-content">
+              <div>
+                <h3 className="game-detail-name">{game.name}</h3>
+                <p className="game-detail-publisher">{game.publishers[0].name}</p>
               </div>
-            </Modal>
-          </form>
-        </div>
-      </section>
+              <img className="game-detail-esrb-rating" alt="game background" src={esrb_rating_m}/>
+            </div>
+          </div>
+          <img className="game-detail-img" src={game.background_image}/>
+          <div className="game-detail-form-container">
+            <p className="game-detail-metascore">Metascore <span style={setMetascoreStyle()}>{game.metacritic || "N/A"}</span></p>
+            <form onSubmit={addToCart} className="game-detail-form">
+              <label className="game-detail-platform-label" htmlFor="platform">Platform</label>
+              <select className="game-detail-platform" onChange={changePlatform} name="platform" id="platform">
+                {platforms}
+              </select>
+              <p className="game-detail-price">${price}</p>
+              <button onClick={openModal} className="game-detail-btn">Add To Cart</button>
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Add to cart popup"
+                className="modal"
+                overlayClassName="overlay"
+              >
+                <div className="modal-item-container">
+                  <div className="modal-item-top modal-item-detail-top">
+                    <h3 className="modal-item-header"><i class="fas fa-check"></i>Added to Cart</h3>
+                    <i onClick={closeModal} className="fas fa-times"></i>
+                  </div>
+                  <div className="modal-item-product">
+                    <p className="modal-item-name">{game.name}</p>
+                    <img className="modal-item-img" src={game.background_image}/>
+                  </div>
+                  <div className="modal-item-btns modal-item-detail-btns">
+                    <button onClick={() => history.push('/cart')} className="btn btn-go-to-cart">Go To Cart</button>
+                    <button onClick={closeModal} className="btn btn-keep-shopping">Keep Shopping</button>
+                  </div>
+                </div>
+              </Modal>
+            </form>
+          </div>
+        </section>
 
-      <section className="game-detail-overview">
-        <div className="game-detail-overview-container">
-          <h2 className="game-detail-overview-header">Overview</h2>
-          <p className="game-detail-overview-description">{game.description_raw}</p>
-        </div>
-      </section>
+        <section className="game-detail-overview">
+          <div className="game-detail-overview-container">
+            <h2 className="game-detail-overview-header">Overview</h2>
+            <p className="game-detail-overview-description">{game.description_raw}</p>
+          </div>
+        </section>
 
-      <section className="game-detail-screenshots">
-        <h2 className="game-detail-screenshots-header">Screenshots</h2>
-        <div className="game-detail-screenshots-container">
-          {screenshotsList}
-        </div>
-      </section>
+        <section className="game-detail-screenshots">
+          <h2 className="game-detail-screenshots-header">Screenshots</h2>
+          <div className="game-detail-screenshots-container">
+            {screenshotsList}
+          </div>
+        </section>
 
+      </div>
+    }
+
+    <div className={`loading-icon-container ${game !== null ? "hidden" : "visible"}`}>
+      <div className={`loading-icon ${game !== null ? "hidden" : "visible"}`}>
+        <div className="loading-icon-bar"></div>
+        <div className="loading-icon-bar"></div>
+        <div className="loading-icon-bar"></div>
+      </div>
     </div>
+
+    </>
   )
 }
 
