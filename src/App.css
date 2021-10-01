@@ -737,7 +737,7 @@ button {
 }
 
 .shipping-form-btn {
-  grid-column: 4 / 5;
+  grid-column: 2;
 }
 
 .post-form-submit {
@@ -872,7 +872,7 @@ hr {
   display: none;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 500px) {
 
   .shipping-form-input-container {
     grid-column: 1 / 3;
@@ -934,6 +934,10 @@ hr {
 
   .phone-number {
     grid-column: 3 / 5;
+  }
+
+  .shipping-form-btn {
+    grid-column: 4 / 5;
   }
 
   .card-number {
