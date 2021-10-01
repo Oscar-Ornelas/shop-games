@@ -30,6 +30,12 @@ button {
   text-decoration: none;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .container {
   padding: 2em;
 }
@@ -323,6 +329,7 @@ button {
   visibility: visible;
   opacity: 1;
   transition: opacity 1.5s linear;
+  z-index: 1;
 }
 
 .hidden {
@@ -943,8 +950,13 @@ hr {
 }
 
 /* Order Confirmation */
+.order-confirmation {
+  min-height: 100vh;
+  min-width: 100%
+}
+
 .order-confirmation-container {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

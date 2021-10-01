@@ -13,40 +13,43 @@ import Footer from './components/Footer';
 
 
 function App() {
-  const [cart, setCart] = useState({games: [], cartCount: 0, gamesPrice: 0, tax: 0});
+  const [cart, setCart] = useState({games: [], cartCount: 0, gamesPrice: 0, tax: 0, cartPaid: false});
   const [navSlide, setNavSlide] = useState(false);
 
   return (
     <>
       <Header cart={cart} navSlide={navSlide} setNavSlide={setNavSlide}/>
-      <Switch>
-        <Route exact path="/">
-          <Home/>
-        </Route>
-        <Route path="/detail/:gameId">
-          <GameDetail cart={cart} setCart={setCart}/>
-        </Route>
-        <Route path="/cart">
-          <Cart cart={cart} setCart={setCart}/>
-        </Route>
-        <Route path="/search/:searchValue">
-          <Search/>
-        </Route>
-        {cart.cartCount > 0 ?
-          <>
-            <Route path="/checkout">
-              <Checkout cart={cart}/>
-            </Route>
-            <Route path="/order-confirmation">
+      <div className="app-container">
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/detail/:gameId">
+            <GameDetail cart={cart} setCart={setCart}/>
+          </Route>
+          <Route path="/cart">
+            <Cart cart={cart} setCart={setCart}/>
+          </Route>
+          <Route path="/search/:searchValue">
+            <Search/>
+          </Route>
+          <Route path="/checkout">
+            {cart.cartCount > 0 ?
+              <Checkout cart={cart} setCart={setCart}/>
+            :
+              <Redirect to="/"/>
+            }
+          </Route>
+          <Route path="/order-confirmation">
+            {cart.cartPaid === true ?
               <OrderConfirmation setCart={setCart}/>
-            </Route>
-          </>
-          :
-          <Redirect to="/"/>
-        }
-
-      </Switch>
-      <Footer/>
+            :
+              <Redirect to="/"/>
+            }
+          </Route>
+        </Switch>
+        <Footer/>
+      </div>
       <LowerHeader cart={cart} navSlide={navSlide} setNavSlide={setNavSlide}/>
     </>
   );

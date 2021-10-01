@@ -52,6 +52,7 @@ function Checkout(props) {
   function completeOrder(e) {
     const {disabled} = e.target;
     if(!disabled) {
+      props.setCart(prevCart => ({...prevCart, cartPaid: true}))
       history.push("/order-confirmation");
     }
   }
