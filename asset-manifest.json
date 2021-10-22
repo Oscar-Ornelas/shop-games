@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/shop-games/static/css/main.aa021fc8.chunk.css",
+    "main.js": "/shop-games/static/js/main.828a7624.chunk.js",
+    "main.js.map": "/shop-games/static/js/main.828a7624.chunk.js.map",
+    "runtime-main.js": "/shop-games/static/js/runtime-main.6ef84e8e.js",
+    "runtime-main.js.map": "/shop-games/static/js/runtime-main.6ef84e8e.js.map",
+    "static/js/2.35d1a458.chunk.js": "/shop-games/static/js/2.35d1a458.chunk.js",
+    "static/js/2.35d1a458.chunk.js.map": "/shop-games/static/js/2.35d1a458.chunk.js.map",
+    "index.html": "/shop-games/index.html",
+    "precache-manifest.b04dffdbc1983880771fb044122ef612.js": "/shop-games/precache-manifest.b04dffdbc1983880771fb044122ef612.js",
+    "service-worker.js": "/shop-games/service-worker.js",
+    "static/css/main.aa021fc8.chunk.css.map": "/shop-games/static/css/main.aa021fc8.chunk.css.map",
+    "static/js/2.35d1a458.chunk.js.LICENSE.txt": "/shop-games/static/js/2.35d1a458.chunk.js.LICENSE.txt",
+    "static/media/rawgapilogo.PNG": "/shop-games/static/media/rawgapilogo.2a6e84c5.PNG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6ef84e8e.js",
+    "static/js/2.35d1a458.chunk.js",
+    "static/css/main.aa021fc8.chunk.css",
+    "static/js/main.828a7624.chunk.js"
+  ]
+}
